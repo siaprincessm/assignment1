@@ -1,13 +1,19 @@
-let centerpoint = [14.5995, 120.9842]
-let map = L.map('map');
-map.setView(centerpoint, 13);
+const BASE_API_URL = "https://api.foursquare.com/v3";
+const API_KEY = "fsq3r3HIqIF97uAFdTKBAeDoa3QxozYiB7PQQ0NlGVrou1I=";
+const headers = {
+    "Accept": 'application/json',
+    "Authorization": API_KEY
+}
 
-//create tileLayer
-let tileLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
-})
+async function search() {
+    let ll = "14.6760,121.0437";
+    let query = "Jollibee";
+    let response = await axios.get(BASE_API_URL + '/places/search',{
+        "headers": headers,
+        "params": {
+            'll':ll,
+            'query':query
+        }
+    })
+    console.log(response.data)
+}
