@@ -21,7 +21,7 @@ div#map {
     max-height: 300px;
 }
 
-.search-result{
+#search-result{
     cursor: pointer;
 }
 

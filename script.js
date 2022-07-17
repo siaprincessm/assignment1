@@ -38,10 +38,17 @@ function main() {
                 }
             })
 
-            document.querySelector("#toggleSearchBtn").addEventListener('click', function (){
-                let currentDisplay = document.querySelector('#search-contianer').style.currentDisplay
-            })
+            document.querySelector("#toggleSearchBtn").addEventListener('click', function(){
+                let searchContainerElement =  document.querySelector("#search-container");
+                let currentDisplay = searchContainerElement.style.display;
+                if (! currentDisplay  || currentDisplay == 'none') {
+                    searchContainerElement.style.display = 'block';
+                } else {
+                    // if the searc container is visible, then hide it
+                    searchContainerElement.style.display = 'none';
+            }
         })
+    })
 
     }
     init();
